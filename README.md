@@ -42,6 +42,9 @@ To check if Gatlin is working properly, run the Gatling tests runner or the Gatl
 'Reports generated in 0s.
 Please open the following file: (path to an index.html file)'
 - Put this link into your browser to see the results of the test
+
+![](img/Gatling_tests_runner_browser.png)  
+
 - Now you have verified that Gatling is working properly
 
 ### Verify Installation - Gatlin Recorder
