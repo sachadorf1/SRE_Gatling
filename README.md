@@ -6,8 +6,9 @@
   - [Verify Installation - Gatlin Recorder](#verify-installation---gatlin-recorder)
 ## Set Up
 ### Prerequisites
+- IntelliJ 
 - Java 8+
-- Scala?
+- Scala plugin in IntelliJ (In Intellij 'Ctrl + Alt + S' to go into Plugin window and install Scala)
 
 ### Installing Gatling
 https://www.blazemeter.com/blog/how-to-install-gatling-on-windows
