@@ -86,7 +86,7 @@ npm start
 
 ![](img/Gatling_Inspect_Network.jpg)
 
-- Click on the down arrow to export the HAR file
+- Click on the down arrow to export the HAR file (4 in diagram)
 - Save it in your C folder and give it an appropriate name (e.g. sacha_app_posts_recorder.har)
 
 ## Run a test
