@@ -217,7 +217,7 @@ In CloudWatch:
 ![](img/sns_a2a_a2p_diagram.jpg)
 
 ### SNS A2A - Application to Application
-- Sends notifica
+
 
 ### SNS A2P - Application to Person
 
