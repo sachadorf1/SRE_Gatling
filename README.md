@@ -8,6 +8,7 @@
 - [Record visit to each page on the app](#record-visit-to-each-pageon-the-app)
 - [Run a test](#run-a-test)
 - [Run your tests with 10 x more visits each time](#run-your-tests-with-10-x-more-visits-each-time)
+- [Using HTTP](#using-http)
 ## Set Up
 ### Prerequisites
 - IntelliJ 
@@ -125,3 +126,121 @@ cd recorder.bat
 - Copy this file into your browser and you can see the results in a lovely user friendly format
 
 - Repeat these steps, increasing the atOnceUsers value by a factor of 10 each time to see how the results change.
+
+## HTTP Proxy
+
+In the terminal:
+- `recorder.bat`
+- Recorder Mode: HTTP Proxy
+- Enter Class Name
+- Start
+- Gatlin Recorder - Running... window should appear
+
+In Windows:
+- Go into `Network and Internet Settings`
+- Proxy
+- Manual Proxy Setup: On
+- Address: http:/localhost
+- Port 8000
+- Save
+- Check it has saved
+
+![](img/Manual_Proxy_Setup_Window.png)
+
+In Gatlin recorder:
+- Save and close
+
+## CloudWatch metrics
+What are you monitoring with cloud i.e. Network Load, CPU %, memory etc (google what should we be monitoring for INTERFACING WEB APP) then monitor those factors and save logs - create events on cloud watch to trigger ASG with ALB
+Create a diagram of the entire infrastructure
+A-Z
+
+https://dzone.com/articles/how-to-choose-monitoring-tools-for-devops-and-sre
+
+To achieve Highly Availability and Scalability 
+
+## What are we monitoring? 
+
+### Resource Monitoring (CPU, Network< Memory etc)
+- Monitoring Infrastructure e.g. RAM, CPU, remaining disk space
+### Network Monitoring
+- Captures incoming requests, outgoing responses across everything (switches, firewalls, servers etc)
+### Application Performance Monitoring
+- Collect data on how the overall service is performing
+- Sends requests to the service and tracks speed, completeness of the response
+- Ensures services perform at expected levels
+### Any Third-party resources/component 
+- Monitoring the health and availability of third-party components in your architecture
+![](img/autoscalinggroup_loadbalancer_diagram.png)
+### Scaling Out
+- Creates new instances in a particular scenario (e.g. if CPU Utilisation is over 50%)
+### Scaling In
+- Removes instances in a particular scenario (e.g. if CPU Utilisation is under 50% for a certain period of time)
+### Scaling Up
+- Increases the size of the instance (e.g. from t2.micro to t2.medium)
+### Scaling Down
+- Decreases the size of the instance (e.g. from t2.medium to t2.micro)
+
+## Dynamic Scaling Policies with CloudWatch Alarms
+https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html
+
+- Set up a dynamic scaling policy for
+  - CPU Utilisation
+  - Network In
+  - Request Count per target
+
+![](img/dynamic_scaling_policies_1.png)
+![](img/dynamic_scaling_policies_2.png)
+
+I used Terraform to set these up so see [Terraform documentation](https://github.com/sachadorf1/IAC_Terraform) for how to set these up via Terraform or you can set them up in AWS.
+
+- create or use metrics and Graphs
+- create a Dash board of key service health 
+- create logs of events
+
+In CloudWatch:
+- Dashboards
+- Create dashboard (name e.g. SRE_sacha_dashboard)
+- Add widget
+  - Line -> Next
+  - Metrics -> Configure
+  - EC2
+  - By Auto Scaling Group
+  - Search for your auto scaling group
+  - Metric Name: CPUUtilization, NetworkIn
+
+![](img/CloudWatchDashboard.png)
+
+# AWS Simple Notification Service (SNS)
+
+![](img/Amazon-SNS_event_diagram.png)
+![](img/sns_a2a_a2p_diagram.jpg)
+
+### SNS A2A - Application to Application
+- Sends notifica
+
+### SNS A2P - Application to Person
+
+See [documentation on Monitoring](https://github.com/sachadorf1/SRE_Monitoring#sns-notifications)
+
+- Click on Auto Scaling Groups on the side tab under Auto Scaling
+- Select the Auto Scaling Group you just created
+- In Activity, in Activity notifications click Create notification
+- Create a topic
+- Name: SRE_sacha_autoscale_notification
+- Recipients: your email address
+- Tick the ones you want to be notified for
+- Click Create Notification
+- You should recieve a confirmation email
+- Go into your email and click Confirm Subscription
+
+# Simple Queue Service (SQS)
+- More organised, simple
+- Whatever goes wrong, it will send the notification
+
+
+
+
+
+SQS? 
+Create a Diagram for each service and the entire process of making your App highly available and scalable 
